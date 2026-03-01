@@ -5,9 +5,39 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Explorez les pays du monde : fiches détaillées, recherche, filtres, favoris, horloges et résumés Wikipedia. World Explorer." />
-    <title>World Explorer – Découvrez le monde</title>
+    <title>World Explorer</title>
+    <style>
+      /* ===== Splash Screen ===== */
+      #splash{position:fixed;inset:0;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0f172a;transition:opacity .5s ease,visibility .5s ease}
+      #splash.hide{opacity:0;visibility:hidden;pointer-events:none}
+      .sp-globe{width:72px;height:72px;animation:sp-spin 2.4s linear infinite,sp-fade-in .6s ease both}
+      @keyframes sp-spin{0%{transform:rotateY(0)}100%{transform:rotateY(360deg)}}
+      @keyframes sp-fade-in{0%{opacity:0;transform:scale(.85) rotateY(0)}100%{opacity:1;transform:scale(1) rotateY(0)}}
+      .sp-title{margin-top:20px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:1.5rem;font-weight:700;color:#fff;letter-spacing:.04em;opacity:0;animation:sp-txt .6s ease .3s forwards}
+      .sp-dot{width:6px;height:6px;border-radius:50%;display:inline-block;margin:0 4px;background:#38bdf8;opacity:.3;animation:sp-pulse 1.2s ease-in-out infinite}
+      .sp-dot:nth-child(2){animation-delay:.2s}
+      .sp-dot:nth-child(3){animation-delay:.4s}
+      .sp-dots{margin-top:18px;display:flex;align-items:center;opacity:0;animation:sp-txt .5s ease .6s forwards}
+      @keyframes sp-txt{to{opacity:1}}
+      @keyframes sp-pulse{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
+    </style>
   </head>
   <body>
+    <!-- Splash Screen -->
+    <div id="splash">
+      <svg class="sp-globe" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+        <path d="M2 12h20"/>
+      </svg>
+      <div class="sp-title">World Explorer</div>
+      <div class="sp-dots">
+        <span class="sp-dot"></span>
+        <span class="sp-dot"></span>
+        <span class="sp-dot"></span>
+      </div>
+    </div>
+
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

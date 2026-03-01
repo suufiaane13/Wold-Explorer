@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { FavoritesProvider } from './contexts/FavoritesContext';
@@ -10,6 +11,17 @@ import Favorites from './pages/Favorites';
 import NotFound from './pages/NotFound';
 
 function App() {
+  useEffect(() => {
+    const splash = document.getElementById('splash');
+    if (splash) {
+      const timer = setTimeout(() => {
+        splash.classList.add('hide');
+        setTimeout(() => splash.remove(), 600);
+      }, 1200);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
   return (
     <ThemeProvider>
       <FavoritesProvider>

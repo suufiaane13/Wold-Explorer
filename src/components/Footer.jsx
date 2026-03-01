@@ -27,7 +27,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className={`${isDark ? 'bg-dark text-light' : 'bg-light text-dark border-top'} mt-auto`} style={{ marginBottom: '100px', overflow: 'hidden' }}>
+    <footer className={`${isDark ? 'bg-dark text-light' : 'bg-light text-dark border-top'} mt-auto`} style={{ marginBottom: 0, paddingBottom: 0, overflow: 'hidden' }}>
       <div className="container py-4 py-md-5">
         <div className="row g-3 g-md-4">
           {/* À propos du projet */}
@@ -67,7 +67,7 @@ const Footer = () => {
                   >
                     <p className={`${isDark ? 'text-muted' : 'text-secondary'} mb-3`}>
                       Explorez les pays du monde entier avec des informations en temps réel, 
-                      des anecdotes générées par IA, et une expérience utilisateur moderne et intuitive.
+                      des résumés Wikipedia, et une expérience utilisateur moderne et intuitive.
                     </p>
                     <div className="d-flex flex-wrap gap-2 mb-3">
                       <span className="badge bg-primary">React 19.1.1</span>
@@ -118,7 +118,7 @@ const Footer = () => {
                     </li>
                     <li className="mb-2">
                       <Heart size={16} className="text-primary me-2" />
-                      <span className={`${isDark ? 'text-muted' : 'text-secondary'}`}>Anecdotes IA personnalisées</span>
+                      <span className={`${isDark ? 'text-muted' : 'text-secondary'}`}>Résumés Wikipedia</span>
                     </li>
                   </ul>
                 </motion.div>
@@ -211,7 +211,7 @@ const Footer = () => {
               </div>
               <div className="col-6 col-md-3">
                 <div className="text-warning h5 h4-md mb-1">&infin;</div>
-                <small className={`${isDark ? 'text-muted' : 'text-secondary'}`}>Anecdotes IA</small>
+                <small className={`${isDark ? 'text-muted' : 'text-secondary'}`}>Résumés</small>
               </div>
               <div className="col-6 col-md-3">
                 <div className="text-info h5 h4-md mb-1">100%</div>

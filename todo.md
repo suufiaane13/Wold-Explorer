@@ -2,7 +2,7 @@
 1. 🎯 Objectif
 
 Créer une application web interactive qui permet d’explorer les pays du monde entier.
-Les utilisateurs peuvent consulter les informations de base et avancées sur chaque pays, effectuer des recherches, appliquer des filtres, et découvrir des anecdotes grâce à l’IA intégrée.
+Les utilisateurs peuvent consulter les informations de base et avancées sur chaque pays, effectuer des recherches, appliquer des filtres, et découvrir des résumés via Wikipedia.
 
 2. 👥 Utilisateurs cibles
 
@@ -30,7 +30,7 @@ Infos : nom, capitale, population, langues, monnaie, fuseau horaire.
 
 Carte des pays frontaliers avec navigation possible.
 
-Section Fun Fact IA (anecdote générée automatiquement).
+Section Fun Fact IA (résumé Wikipedia).
 
 Mode clair / sombre
 
@@ -108,7 +108,7 @@ Framer Motion (animations fluides)
 
 REST Countries API (données pays)
 
-Windsurf AI (génération d’anecdotes / fun facts IA)
+Windsurf AI (génération d’résumés / fun facts IA)
 
 6. 📅 Étapes de développement
 
@@ -134,7 +134,7 @@ Implémentation recherche + filtres.
 
 UI/UX design (dark mode, animations, cards).
 
-Ajout IA pour anecdotes.
+Ajout résumés Wikipedia.
 
 Optimisation responsive + performance.
 

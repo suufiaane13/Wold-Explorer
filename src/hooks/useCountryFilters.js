@@ -22,10 +22,14 @@ export const useCountryFilters = (countries) => {
   // Filtrer et trier les pays
   const filteredAndSortedCountries = useMemo(() => {
     let filtered = countries.filter(country => {
-      // Filtre par terme de recherche (nom ou capitale)
+      // Filtre par terme de recherche (nom EN, nom FR, nom officiel, capitale)
+      const term = searchTerm.toLowerCase();
       const matchesSearch = !searchTerm || 
-        country.name?.common?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        country.capital?.[0]?.toLowerCase().includes(searchTerm.toLowerCase());
+        country.name?.common?.toLowerCase().includes(term) ||
+        country.name?.official?.toLowerCase().includes(term) ||
+        country.translations?.fra?.common?.toLowerCase().includes(term) ||
+        country.translations?.fra?.official?.toLowerCase().includes(term) ||
+        country.capital?.[0]?.toLowerCase().includes(term);
 
       // Filtre par région
       const matchesRegion = !selectedRegion || country.region === selectedRegion;

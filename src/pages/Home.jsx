@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Loader2, AlertCircle, LayoutGrid, List, Grid3X3 } from 'lucide-react';
+import { AlertCircle, LayoutGrid, List, Grid3X3 } from 'lucide-react';
 import CountryCard from '../components/CountryCard';
+import CountryCardSkeleton from '../components/CountryCardSkeleton';
 import SearchAndFilter from '../components/SearchAndFilter';
 import Pagination from '../components/Pagination';
 import { countriesAPI } from '../utils/api';
@@ -116,19 +117,7 @@ const Home = () => {
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, [currentPage, itemsPerPage]);
 
-  if (loading) {
-    return (
-      <div className="min-vh-100 d-flex align-items-center justify-content-center">
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-          className="text-primary"
-        >
-          <Loader2 size={48} />
-        </motion.div>
-      </div>
-    );
-  }
+  const skeletonCount = viewMode === 'compact' ? 24 : 12;
 
   if (error) {
     return (
@@ -357,7 +346,32 @@ const Home = () => {
           </motion.div>
 
           {/* Countries */}
-          {paginatedData.length > 0 ? (
+          {loading ? (
+            <div
+              className={
+                viewMode === 'list'
+                  ? 'cc-list-container'
+                  : viewMode === 'compact'
+                    ? 'row g-2 g-md-3'
+                    : 'row g-4'
+              }
+            >
+              {Array.from({ length: skeletonCount }, (_, i) => (
+                <div
+                  key={i}
+                  className={
+                    viewMode === 'list'
+                      ? ''
+                      : viewMode === 'compact'
+                        ? 'col-6 col-md-4 col-lg-2'
+                        : 'col-sm-6 col-md-4 col-lg-3'
+                  }
+                >
+                  <CountryCardSkeleton viewMode={viewMode} />
+                </div>
+              ))}
+            </div>
+          ) : paginatedData.length > 0 ? (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

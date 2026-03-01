@@ -27,7 +27,7 @@ export const useAIFunFact = (country) => {
         const fact = await aiService.generateCountryFunFact(country);
         setFunFact(fact);
       } catch (err) {
-        setError('Impossible de générer une anecdote pour ce pays.');
+        setError('Impossible de charger le résumé pour ce pays.');
         console.error('Erreur lors de la génération du fun fact:', err);
       } finally {
         setLoading(false);
@@ -52,7 +52,7 @@ export const useAIFunFact = (country) => {
       const fact = await aiService.generateCountryFunFact(country);
       setFunFact(fact);
     } catch (err) {
-      setError('Impossible de générer une nouvelle anecdote.');
+      setError('Impossible de charger un nouveau résumé.');
       console.error('Erreur lors de la régénération du fun fact:', err);
     } finally {
       setLoading(false);

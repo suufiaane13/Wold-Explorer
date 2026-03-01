@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Heart, Users, MapPin, Globe, DollarSign, Clock, Languages, Lightbulb, Loader2, RefreshCw } from 'lucide-react';
+import { ArrowLeft, Heart, Users, MapPin, Globe, DollarSign, Clock, Languages, Lightbulb, Loader2, RefreshCw, Share2, Maximize2, Map, Check, Copy } from 'lucide-react';
 import { countriesAPI } from '../utils/api';
 import { useFavorites } from '../contexts/FavoritesContext';
 import { useAIFunFact } from '../hooks/useAIFunFact';
@@ -55,6 +55,29 @@ const CountryDetails = () => {
     });
   }, [country?.cca3, country?.borders]);
 
+  const [copied, setCopied] = useState(false);
+
+  const formatArea = (area) => {
+    if (!area) return 'N/A';
+    return area.toLocaleString('fr-FR') + ' km\u00B2';
+  };
+
+  const handleShare = async () => {
+    const url = window.location.href;
+    const title = `${country.name?.common} — World Explorer`;
+    if (navigator.share) {
+      try {
+        await navigator.share({ title, url });
+      } catch (_) {}
+    } else {
+      try {
+        await navigator.clipboard.writeText(url);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      } catch (_) {}
+    }
+  };
+
   const formatLanguages = (languages) => {
     if (!languages) return 'N/A';
     return Object.values(languages).join(', ');
@@ -102,11 +125,11 @@ const CountryDetails = () => {
   return (
     <div className="min-vh-100" style={{ paddingTop: '20px', paddingBottom: '120px' }}>
       <div className="container">
-        {/* Back Button */}
+        {/* Back + Share Buttons */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="mb-4"
+          className="mb-4 d-flex align-items-center gap-2"
         >
           <Link
             to="/"
@@ -117,6 +140,16 @@ const CountryDetails = () => {
             <ArrowLeft size={20} className="me-2" />
             <span>Retour aux pays</span>
           </Link>
+          <motion.button
+            whileTap={{ scale: 0.92 }}
+            onClick={handleShare}
+            className="btn btn-outline-primary d-flex align-items-center ms-auto"
+            style={{ width: 'fit-content' }}
+            aria-label="Partager ce pays"
+          >
+            {copied ? <Check size={18} className="me-1" /> : <Share2 size={18} className="me-1" />}
+            <span className="d-none d-sm-inline">{copied ? 'Copié !' : 'Partager'}</span>
+          </motion.button>
         </motion.div>
 
         <div className="row g-3 g-lg-4 mb-4">
@@ -269,6 +302,46 @@ const CountryDetails = () => {
                     </div>
                   </div>
                 </div>
+
+                <div className="col-12 col-sm-6">
+                  <div className="card h-100 shadow-sm">
+                    <div className="card-body p-3">
+                      <div className="d-flex align-items-center mb-2">
+                        <div className="p-2 bg-secondary bg-opacity-10 rounded me-2">
+                          <Maximize2 className="text-secondary" size={18} />
+                        </div>
+                        <h6 className="card-title mb-0 fw-medium">Superficie</h6>
+                      </div>
+                      <p className="card-text text-muted mb-0 small">
+                        {formatArea(country.area)}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {(country.maps?.googleMaps || country.latlng?.length >= 2) && (
+                  <div className="col-12 col-sm-6">
+                    <div className="card h-100 shadow-sm">
+                      <div className="card-body p-3">
+                        <div className="d-flex align-items-center mb-2">
+                          <div className="p-2 bg-danger bg-opacity-10 rounded me-2">
+                            <Map className="text-danger" size={18} />
+                          </div>
+                          <h6 className="card-title mb-0 fw-medium">Carte</h6>
+                        </div>
+                        <a
+                          href={country.maps?.googleMaps || `https://www.google.com/maps/@${country.latlng[0]},${country.latlng[1]},6z`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn btn-outline-danger btn-sm w-100"
+                        >
+                          <Map size={14} className="me-1" />
+                          Voir sur Google Maps
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </motion.div>
           </div>
@@ -297,8 +370,8 @@ const CountryDetails = () => {
                   whileTap={{ scale: 0.95 }}
                   onClick={regenerateFunFact}
                   className="btn btn-outline-primary btn-sm p-1 p-sm-2"
-                  title="Générer une nouvelle anecdote"
-                  aria-label="Générer une nouvelle anecdote pour ce pays"
+                  title="Générer un nouveau résumé"
+                  aria-label="Générer un nouveau résumé pour ce pays"
                   style={{ minWidth: '32px' }}
                 >
                   <RefreshCw size={16} />

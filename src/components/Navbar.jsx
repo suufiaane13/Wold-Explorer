@@ -1,12 +1,12 @@
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Moon, Sun, Heart, Globe, Menu, X } from 'lucide-react';
+import { Heart, Globe, Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 import { useFavorites } from '../contexts/FavoritesContext';
 
 const Navbar = () => {
-  const { isDark, toggleTheme } = useTheme();
+  const { isDark } = useTheme();
   const location = useLocation();
   const { favorites } = useFavorites();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -101,35 +101,6 @@ const Navbar = () => {
               </motion.div>
             </Link>
 
-            {/* Theme Toggle */}
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={toggleTheme}
-              className="btn p-0 border-0"
-              aria-label={isDark ? 'Activer le mode clair' : 'Activer le mode sombre'}
-              style={{
-                width: '44px',
-                height: '44px',
-                borderRadius: '50%',
-                background: isDark 
-                  ? 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)' 
-                  : 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
-                boxShadow: isDark 
-                  ? '0 4px 20px rgba(251, 191, 36, 0.3)' 
-                  : '0 4px 20px rgba(30, 41, 59, 0.3)'
-              }}
-            >
-              <motion.div
-                animate={{ rotate: isDark ? 0 : 180 }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
-              >
-                {isDark ? 
-                  <Sun size={20} className="text-white" /> : 
-                  <Moon size={20} className="text-white" />
-                }
-              </motion.div>
-            </motion.button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -192,22 +163,6 @@ const Navbar = () => {
                   </motion.div>
                 </Link>
 
-                {/* Mobile Theme Toggle */}
-                <motion.button
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() => {
-                    toggleTheme();
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className={`w-100 d-flex align-items-center justify-content-center p-3 mt-2 rounded-3 border-0 ${
-                    isDark ? 'bg-white/5 text-white' : 'bg-black/5 text-dark'
-                  }`}
-                >
-                  {isDark ? <Sun size={20} className="me-2" /> : <Moon size={20} className="me-2" />}
-                  <span className="fw-medium">
-                    Passer en mode {isDark ? 'clair' : 'sombre'}
-                  </span>
-                </motion.button>
               </div>
             </motion.div>
           )}

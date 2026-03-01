@@ -19,7 +19,7 @@ const CountryCard = ({ country, index, currentPage, viewMode = 'grid' }) => {
   };
 
   const flagSrc = country.flags?.svg || country.flags?.png;
-  const name = country.name?.common;
+  const name = country.translations?.fra?.common || country.name?.common;
   const capital = country.capital?.[0] || 'N/A';
   const pop = formatPopulation(country.population, 'short');
   const link = `/country/${country.cca3}`;

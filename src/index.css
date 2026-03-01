@@ -624,3 +624,37 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 767.98px) {
   .mp-mob-row2 .mp-time { font-size: 11px; min-width: 32px; }
 }
+
+/* ===== Skeleton Loading ===== */
+@keyframes skel-pulse {
+  0%, 100% { opacity: .25; }
+  50% { opacity: .5; }
+}
+.skel {
+  background: currentColor;
+  opacity: .2;
+  border-radius: 6px;
+  animation: skel-pulse 1.4s ease-in-out infinite;
+}
+.skel-card { border: none; }
+.skel-card-img { width: 100%; aspect-ratio: 16/9; border-radius: 6px 6px 0 0; }
+.skel-list-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(128,128,128,.12);
+}
+.skel-list-flag  { width: 48px; height: 32px; flex-shrink: 0; border-radius: 4px; }
+.skel-list-name  { width: 120px; height: 16px; border-radius: 4px; }
+.skel-list-cell  { width: 80px;  height: 14px; border-radius: 4px; }
+.skel-list-badge { width: 60px;  height: 20px; border-radius: 10px; margin-left: auto; }
+.skel-compact {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(128,128,128,.12);
+}
+.skel-compact-flag { width: 100%; aspect-ratio: 3/2; border-radius: 0; }
+.skel-compact-body { padding: 8px 10px; }
+.skel-compact-name { width: 70%; height: 14px; border-radius: 4px; margin-bottom: 6px; }
+.skel-compact-sub  { width: 50%; height: 12px; border-radius: 4px; }

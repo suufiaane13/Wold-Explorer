@@ -249,7 +249,7 @@ const Home = () => {
                 aria-label="Chiffres clés"
               >
                 {[
-                  { value: '7',   label: 'Continents' },
+                  { value: '6',   label: 'Continents' },
                   { value: '8B+', label: 'Habitants' },
                   { value: '\u221E',   label: 'Découvertes' }
                 ].map((s) => (

@@ -6,10 +6,7 @@ import { countriesAPI } from '../utils/api';
 import { useFavorites } from '../contexts/FavoritesContext';
 import { useAIFunFact } from '../hooks/useAIFunFact';
 import WorldClock from '../components/WorldClock';
-<<<<<<< HEAD
 import { formatPopulation } from '../utils/formatters';
-=======
->>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
 
 const CountryDetails = () => {
   const { code } = useParams();
@@ -17,21 +14,14 @@ const CountryDetails = () => {
   const [country, setCountry] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-<<<<<<< HEAD
   const [borderNames, setBorderNames] = useState({});
   const { isFavorite, toggleFavorite } = useFavorites();
   const { funFact, loading: funFactLoading, error: funFactError, regenerateFunFact } = useAIFunFact(country);
 
-  // Remonter en haut à l'ouverture de la page (ou au changement de pays)
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [code]);
 
-=======
-  const { isFavorite, toggleFavorite } = useFavorites();
-  const { funFact, loading: funFactLoading, error: funFactError, regenerateFunFact } = useAIFunFact(country);
-
->>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
   useEffect(() => {
     const fetchCountry = async () => {
       try {
@@ -51,7 +41,6 @@ const CountryDetails = () => {
     }
   }, [code]);
 
-<<<<<<< HEAD
   useEffect(() => {
     if (!country?.borders?.length) {
       setBorderNames({});
@@ -65,11 +54,6 @@ const CountryDetails = () => {
       setBorderNames(map);
     });
   }, [country?.cca3, country?.borders]);
-=======
-  const formatPopulation = (population) => {
-    return population?.toLocaleString('fr-FR') || 'N/A';
-  };
->>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
 
   const formatLanguages = (languages) => {
     if (!languages) return 'N/A';
@@ -151,7 +135,6 @@ const CountryDetails = () => {
                 />
               </div>
               
-              {/* Favorite Button */}
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
@@ -214,11 +197,7 @@ const CountryDetails = () => {
                         <h6 className="card-title mb-0 fw-medium">Population</h6>
                       </div>
                       <p className="card-text text-muted mb-0 small">
-<<<<<<< HEAD
                         {formatPopulation(country.population, 'long')}
-=======
-                        {formatPopulation(country.population)}
->>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
                       </p>
                     </div>
                   </div>
@@ -309,11 +288,7 @@ const CountryDetails = () => {
                   <Lightbulb size={20} className="text-primary" />
                 </div>
                 <h2 className="h5 mb-0 fw-bold">
-<<<<<<< HEAD
                   À propos
-=======
-                  Le saviez-vous ?
->>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
                 </h2>
               </div>
               {!funFactLoading && (
@@ -341,21 +316,16 @@ const CountryDetails = () => {
                 >
                   <Loader2 size={18} />
                 </motion.div>
-<<<<<<< HEAD
                 <span className="text-muted small">Chargement depuis Wikipedia...</span>
-=======
-                <span className="text-muted small">Génération d'une anecdote fascinante...</span>
->>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
               </div>
             ) : funFactError ? (
               <div className="alert alert-warning py-2 mb-0" role="alert">
                 <small className="d-flex align-items-center">
-                  <span className="me-2">⚠️</span>
+                  <span className="me-2">&#9888;&#65039;</span>
                   <span>{funFactError}</span>
                 </small>
               </div>
             ) : (
-<<<<<<< HEAD
               <>
                 <p className="card-text small mb-2 lh-base">
                   {funFact}
@@ -370,11 +340,6 @@ const CountryDetails = () => {
                   Source : Wikipedia
                 </a>
               </>
-=======
-              <p className="card-text small mb-0 lh-base">
-                {funFact}
-              </p>
->>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
             )}
           </div>
         </motion.div>
@@ -399,32 +364,19 @@ const CountryDetails = () => {
               </span>
             </div>
             <div className="row g-2">
-<<<<<<< HEAD
               {country.borders.map((borderCode) => (
                 <div key={borderCode} className="col-6 col-sm-4 col-md-3 col-lg-2">
-=======
-              {country.borders.map((border) => (
-                <div key={border} className="col-6 col-sm-4 col-md-3 col-lg-2">
->>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
                   <motion.div
                     whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.98 }}
                     className="h-100"
                   >
                     <Link
-<<<<<<< HEAD
                       to={`/country/${borderCode}`}
                       className="btn btn-outline-primary w-100 d-flex align-items-center justify-content-center text-center"
                       style={{ height: '100%' }}
                     >
                       {borderNames[borderCode] ?? borderCode}
-=======
-                      to={`/country/${border}`}
-                      className="btn btn-outline-primary w-100 d-flex align-items-center justify-content-center"
-                      style={{ height: '100%' }}
-                    >
-                      {border}
->>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
                     </Link>
                   </motion.div>
                 </div>

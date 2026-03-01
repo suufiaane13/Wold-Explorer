@@ -16,12 +16,8 @@ const SearchAndFilter = ({
   const regions = [
     'All',
     'Africa',
-<<<<<<< HEAD
     'Americas',
     'Antarctic',
-=======
-    'Americas', 
->>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
     'Asia',
     'Europe',
     'Oceania'

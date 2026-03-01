@@ -72,10 +72,6 @@ const Footer = () => {
                     <div className="d-flex flex-wrap gap-2 mb-3">
                       <span className="badge bg-primary">React 19.1.1</span>
                       <span className="badge bg-secondary">Bootstrap 5</span>
-<<<<<<< HEAD
-=======
-                      <span className="badge bg-success">Windsurf AI</span>
->>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
                     </div>
                   </motion.div>
                 </motion.div>
@@ -214,7 +210,7 @@ const Footer = () => {
                 <small className={`${isDark ? 'text-muted' : 'text-secondary'}`}>Horloges</small>
               </div>
               <div className="col-6 col-md-3">
-                <div className="text-warning h5 h4-md mb-1">∞</div>
+                <div className="text-warning h5 h4-md mb-1">&infin;</div>
                 <small className={`${isDark ? 'text-muted' : 'text-secondary'}`}>Anecdotes IA</small>
               </div>
               <div className="col-6 col-md-3">
@@ -234,7 +230,7 @@ const Footer = () => {
         >
           <div className="col-12 col-md-6 mb-2 mb-md-0">
             <p className={`${isDark ? 'text-muted' : 'text-secondary'} mb-0 text-center text-md-start small`}>
-              © {currentYear} World Explorer. <br /> Créé par{' '}
+              &copy; {currentYear} World Explorer. <br /> Créé par{' '}
               <span className="text-primary fw-medium">Soufiane HJ</span>{' '}
               avec{' '}
               <Heart size={12} className="text-danger mx-1" fill="currentColor" />

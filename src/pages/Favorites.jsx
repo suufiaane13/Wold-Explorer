@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Heart, ArrowLeft, Globe, LayoutGrid, List, Grid3X3 } from 'lucide-react';
@@ -16,7 +15,6 @@ const Favorites = () => {
     localStorage.setItem('viewMode', mode);
   };
 
-  // Restaurer la position du scroll au retour depuis une page pays
   useEffect(() => {
     try {
       const saved = sessionStorage.getItem(COUNTRIES_SCROLL_POS_KEY);
@@ -29,16 +27,6 @@ const Favorites = () => {
       });
     } catch (_) {}
   }, []);
-=======
-import { motion } from 'framer-motion';
-import { Heart, ArrowLeft, Globe } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import CountryCard from '../components/CountryCard';
-import { useFavorites } from '../contexts/FavoritesContext';
-
-const Favorites = () => {
-  const { favorites } = useFavorites();
->>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
 
   return (
     <div className="min-vh-100" style={{ paddingTop: '80px', paddingBottom: '3rem' }}>
@@ -78,16 +66,11 @@ const Favorites = () => {
           </p>
         </motion.div>
 
-<<<<<<< HEAD
         {/* Favorites Count + View toggle */}
-=======
-        {/* Favorites Count */}
->>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
         {favorites.length > 0 && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-<<<<<<< HEAD
             className="mb-4 d-flex justify-content-between align-items-center flex-wrap gap-2"
           >
             <p className="text-muted mb-0">
@@ -115,23 +98,11 @@ const Favorites = () => {
         )}
 
         {/* Favorites */}
-=======
-            className="mb-4"
-          >
-            <p className="text-muted">
-              {favorites.length} pays favori{favorites.length > 1 ? 's' : ''}
-            </p>
-          </motion.div>
-        )}
-
-        {/* Favorites Grid */}
->>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
         {favorites.length > 0 ? (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-<<<<<<< HEAD
             className={
               viewMode === 'list'
                 ? 'cc-list-container'
@@ -153,20 +124,6 @@ const Favorites = () => {
               >
                 <CountryCard country={country} index={index} viewMode={viewMode} />
               </div>
-=======
-            className="row g-4"
-          >
-            {favorites.map((country, index) => (
-              <motion.div
-                key={country.cca3}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 * index }}
-                className="col-sm-6 col-lg-4 col-xl-3"
-              >
-                <CountryCard country={country} />
-              </motion.div>
->>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
             ))}
           </motion.div>
         ) : (

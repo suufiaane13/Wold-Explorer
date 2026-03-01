@@ -1,14 +1,9 @@
 const BASE_URL = 'https://restcountries.com/v3.1';
 
 export const countriesAPI = {
-  // Get all countries
   getAllCountries: async () => {
     try {
-<<<<<<< HEAD
       const response = await fetch(`${BASE_URL}/all?fields=name,capital,population,flags,region,cca3,cca2,area`);
-=======
-      const response = await fetch(`${BASE_URL}/all?fields=name,capital,population,flags,region,cca3,cca2`);
->>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
       if (!response.ok) throw new Error('Failed to fetch countries');
       return await response.json();
     } catch (error) {
@@ -17,7 +12,6 @@ export const countriesAPI = {
     }
   },
 
-  // Get country by code
   getCountryByCode: async (code) => {
     try {
       const response = await fetch(`${BASE_URL}/alpha/${code}`);
@@ -29,7 +23,6 @@ export const countriesAPI = {
     }
   },
 
-  // Search countries by name
   searchCountries: async (name) => {
     try {
       const response = await fetch(`${BASE_URL}/name/${name}?fields=name,capital,population,flags,region,cca3,cca2`);
@@ -41,8 +34,6 @@ export const countriesAPI = {
     }
   },
 
-<<<<<<< HEAD
-  // Get countries by alpha codes (e.g. for border names: codes=fra,esp,ita)
   getCountriesByCodes: async (codes) => {
     if (!codes?.length) return [];
     try {
@@ -56,9 +47,6 @@ export const countriesAPI = {
     }
   },
 
-=======
->>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
-  // Get countries by region
   getCountriesByRegion: async (region) => {
     try {
       const response = await fetch(`${BASE_URL}/region/${region}?fields=name,capital,population,flags,region,cca3,cca2`);

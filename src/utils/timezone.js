@@ -10,6 +10,12 @@
 export const getTimeInTimezone = (timezone) => {
   try {
     const now = new Date();
+<<<<<<< HEAD
+=======
+    console.log(`⏰ Getting time for timezone: ${timezone}`);
+    
+    // Méthode simple et fiable pour obtenir l'heure dans un fuseau horaire
+>>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
     const timeString = now.toLocaleString('en-US', {
       timeZone: timezone,
       year: 'numeric',
@@ -20,6 +26,7 @@ export const getTimeInTimezone = (timezone) => {
       second: '2-digit',
       hour12: false
     });
+<<<<<<< HEAD
     const [datePart, timePart] = timeString.split(', ');
     const [month, day, year] = datePart.split('/');
     const [hour, minute, second] = timePart.split(':');
@@ -33,6 +40,29 @@ export const getTimeInTimezone = (timezone) => {
     );
     return result;
   } catch (error) {
+=======
+    
+    console.log(`⏰ Raw time string: ${timeString}`);
+    
+    // Parser le format "MM/DD/YYYY, HH:mm:ss"
+    const [datePart, timePart] = timeString.split(', ');
+    const [month, day, year] = datePart.split('/');
+    const [hour, minute, second] = timePart.split(':');
+    
+    const result = new Date(
+      parseInt(year),
+      parseInt(month) - 1, // Les mois commencent à 0
+      parseInt(day),
+      parseInt(hour),
+      parseInt(minute),
+      parseInt(second)
+    );
+    
+    console.log(`⏰ Parsed result: ${result.toLocaleTimeString()}`);
+    return result;
+  } catch (error) {
+    console.warn(`Fuseau horaire invalide: ${timezone}`);
+>>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
     return new Date();
   }
 };
@@ -135,6 +165,7 @@ export const parseCountryTimezone = (countryTimezone) => {
  */
 export const getCountryMainTimezone = (country) => {
   if (!country.timezones || country.timezones.length === 0) {
+<<<<<<< HEAD
     return 'UTC';
   }
   const firstTimezone = country.timezones[0];
@@ -144,11 +175,28 @@ export const getCountryMainTimezone = (country) => {
 /**
  * Calcule le décalage horaire du fuseau cible par rapport à l'heure locale (en heures).
  * @param {string} timezone - Fuseau horaire cible (IANA)
+=======
+    console.log(`⚠️ No timezones for ${country?.name?.common}, using UTC`);
+    return 'UTC';
+  }
+
+  // Prendre le premier fuseau horaire et le convertir
+  const firstTimezone = country.timezones[0];
+  const convertedTimezone = parseCountryTimezone(firstTimezone);
+  console.log(`🌍 ${country?.name?.common}: ${firstTimezone} → ${convertedTimezone}`);
+  return convertedTimezone;
+};
+
+/**
+ * Calcule le décalage horaire par rapport à l'heure locale
+ * @param {string} timezone - Fuseau horaire cible
+>>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
  * @returns {string} - Décalage formaté (ex: "+2h", "-5h")
  */
 export const getTimezoneOffset = (timezone) => {
   try {
     const now = new Date();
+<<<<<<< HEAD
     const formatter = new Intl.DateTimeFormat('en-US', {
       timeZone: timezone,
       timeZoneName: 'longOffset',
@@ -170,6 +218,24 @@ export const getTimezoneOffset = (timezone) => {
     if (diff === 0) return 'Même heure';
     if (diff > 0) return `+${diff}h`;
     return `${diff}h`;
+=======
+    
+    // Obtenir l'offset en minutes pour le fuseau horaire local
+    const localOffset = now.getTimezoneOffset();
+    
+    // Obtenir l'offset en minutes pour le fuseau horaire cible
+    const targetDate = new Date(now.toLocaleString("en-US", { timeZone: timezone }));
+    const utcTime = now.getTime() + (localOffset * 60000);
+    const targetTime = targetDate.getTime();
+    const targetOffset = (utcTime - targetTime) / 60000;
+    
+    // Calculer la différence en heures
+    const offsetHours = Math.round((localOffset - targetOffset) / 60);
+    
+    if (offsetHours === 0) return 'Même heure';
+    if (offsetHours > 0) return `+${offsetHours}h`;
+    return `${offsetHours}h`;
+>>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
   } catch (error) {
     return 'N/A';
   }

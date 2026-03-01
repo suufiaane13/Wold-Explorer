@@ -101,6 +101,20 @@ const Navbar = () => {
               </motion.div>
             </Link>
 
+<<<<<<< HEAD
+=======
+            {/* Stats Badge */}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className={`px-3 py-2 rounded-pill ${isDark ? 'bg-white/5' : 'bg-black/5'}`}
+              style={{ backdropFilter: 'blur(8px)' }}
+            >
+              <small className={`${isDark ? 'text-white/70' : 'text-muted'} fw-medium`}>
+                195+ pays
+              </small>
+            </motion.div>
+
+>>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
             {/* Theme Toggle */}
             <motion.button
               whileHover={{ scale: 1.1 }}
@@ -192,6 +206,16 @@ const Navbar = () => {
                   </motion.div>
                 </Link>
 
+<<<<<<< HEAD
+=======
+                {/* Mobile Stats */}
+                <div className={`p-3 rounded-3 text-center ${isDark ? 'bg-white/5' : 'bg-black/5'}`}>
+                  <small className={`${isDark ? 'text-white/70' : 'text-muted'} fw-medium`}>
+                    195+ pays • Mode {isDark ? 'sombre' : 'clair'}
+                  </small>
+                </div>
+
+>>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
                 {/* Mobile Theme Toggle */}
                 <motion.button
                   whileTap={{ scale: 0.98 }}

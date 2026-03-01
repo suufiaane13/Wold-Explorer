@@ -1,19 +1,32 @@
+<<<<<<< HEAD
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Loader2, AlertCircle, LayoutGrid, List, Grid3X3 } from 'lucide-react';
+=======
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { Loader2, AlertCircle } from 'lucide-react';
+>>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
 import CountryCard from '../components/CountryCard';
 import SearchAndFilter from '../components/SearchAndFilter';
 import Pagination from '../components/Pagination';
 import { countriesAPI } from '../utils/api';
 import { useCountryFilters } from '../hooks/useCountryFilters';
 import { usePagination } from '../hooks/usePagination';
+<<<<<<< HEAD
 import { COUNTRIES_SCROLL_POS_KEY } from '../constants/storageKeys';
+=======
+>>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
 
 const Home = () => {
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+<<<<<<< HEAD
+=======
+  // Utiliser les hooks personnalisés pour les filtres et la pagination
+>>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
   const {
     searchTerm,
     selectedRegion,
@@ -28,8 +41,11 @@ const Home = () => {
     clearFilters
   } = useCountryFilters(countries);
 
+<<<<<<< HEAD
   const [viewMode, setViewMode] = useState(() => localStorage.getItem('viewMode') || 'grid');
 
+=======
+>>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
   const {
     currentPage,
     totalPages,
@@ -39,6 +55,7 @@ const Home = () => {
     goToPage,
     changeItemsPerPage,
     resetPagination
+<<<<<<< HEAD
   } = usePagination(filteredCountries, viewMode === 'compact' ? 24 : 12);
   const pendingScrollRef = useRef(null);
 
@@ -47,6 +64,11 @@ const Home = () => {
     localStorage.setItem('viewMode', mode);
     changeItemsPerPage(mode === 'compact' ? 24 : 12);
   };
+=======
+  } = usePagination(filteredCountries, 12);
+
+
+>>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -72,6 +94,7 @@ const Home = () => {
     }
   }, [currentPage, totalPages, resetPagination]);
 
+<<<<<<< HEAD
   // Restaurer la page au retour depuis une page pays
   useEffect(() => {
     if (loading) return;
@@ -120,6 +143,8 @@ const Home = () => {
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, [currentPage, itemsPerPage]);
 
+=======
+>>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
 
   if (loading) {
     return (
@@ -141,6 +166,7 @@ const Home = () => {
         <div className="text-center">
           <AlertCircle className="mx-auto text-danger mb-4" size={48} />
           <h2 className="h4 mb-2">Erreur de chargement</h2>
+<<<<<<< HEAD
           <p className="text-muted mb-4">{error}</p>
           <button
             type="button"
@@ -159,6 +185,9 @@ const Home = () => {
           >
             Réessayer
           </button>
+=======
+          <p className="text-muted">{error}</p>
+>>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
         </div>
       </div>
     );
@@ -166,6 +195,7 @@ const Home = () => {
 
   return (
     <div className="min-vh-100">
+<<<<<<< HEAD
       {/* Hero Section — Professional Responsive */}
       <section className="hero-section" aria-label="Présentation">
 
@@ -294,17 +324,138 @@ const Home = () => {
                 <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                 </svg>
+=======
+      {/* Hero Section */}
+      <section className="position-relative overflow-hidden" style={{ height: '100vh', minHeight: '600px' }}>
+        {/* Background Image */}
+        <div 
+          className="position-absolute top-0 start-0 w-100 h-100"
+          style={{
+            backgroundImage: 'url(https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        >
+          {/* Overlay */}
+          <div 
+            className="position-absolute top-0 start-0 w-100 h-100"
+            style={{
+              background: 'linear-gradient(135deg, rgba(14, 165, 233, 0.8) 0%, rgba(16, 185, 129, 0.7) 100%)',
+              backdropFilter: 'blur(1px)'
+            }}
+          />
+        </div>
+
+        {/* Hero Content */}
+        <div className="position-relative d-flex align-items-center justify-content-center h-100" style={{ paddingTop: '80px' }}>
+          <div className="container text-center text-white px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <h1 className="display-2 display-md-1 fw-bold mb-4" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.3)' }}>
+                Explorez le{' '}
+                <span className="text-warning">Monde</span>
+              </h1>
+              <p className="lead fs-4 fs-md-3 mb-5 mx-auto" style={{ 
+                maxWidth: '700px',
+                textShadow: '0 2px 10px rgba(0,0,0,0.3)',
+                lineHeight: '1.6'
+              }}>
+                Découvrez 195+ pays, leurs cultures fascinantes, leurs données uniques et leurs merveilles cachées
+              </p>
+              
+              {/* CTA Buttons */}
+              <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center align-items-center mb-5">
+                <motion.button
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="btn btn-light btn-lg px-5 py-3 fw-semibold"
+                  style={{ 
+                    borderRadius: '50px',
+                    boxShadow: '0 8px 30px rgba(255,255,255,0.3)',
+                    border: 'none'
+                  }}
+                  onClick={() => document.getElementById('countries-section').scrollIntoView({ behavior: 'smooth' })}
+                >
+                  Commencer l'exploration
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="btn btn-outline-light btn-lg px-5 py-3 fw-semibold"
+                  style={{ 
+                    borderRadius: '50px',
+                    borderWidth: '2px'
+                  }}
+                >
+                  En savoir plus
+                </motion.button>
+              </div>
+
+              {/* Stats */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="row g-4 justify-content-center"
+              >
+                <div className="col-6 col-md-3">
+                  <div className="text-center">
+                    <h3 className="display-6 fw-bold mb-1">195+</h3>
+                    <p className="mb-0 opacity-90">Pays</p>
+                  </div>
+                </div>
+                <div className="col-6 col-md-3">
+                  <div className="text-center">
+                    <h3 className="display-6 fw-bold mb-1">7</h3>
+                    <p className="mb-0 opacity-90">Continents</p>
+                  </div>
+                </div>
+                <div className="col-6 col-md-3">
+                  <div className="text-center">
+                    <h3 className="display-6 fw-bold mb-1">8B+</h3>
+                    <p className="mb-0 opacity-90">Habitants</p>
+                  </div>
+                </div>
+                <div className="col-6 col-md-3">
+                  <div className="text-center">
+                    <h3 className="display-6 fw-bold mb-1">∞</h3>
+                    <p className="mb-0 opacity-90">Découvertes</p>
+                  </div>
+                </div>
+>>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
               </motion.div>
             </motion.div>
           </div>
         </div>
 
+<<<<<<< HEAD
         {/* Wave */}
         <div className="hero-wave" aria-hidden="true">
           <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z" />
           </svg>
         </div>
+=======
+        {/* Scroll Indicator */}
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="position-absolute bottom-0 start-50 translate-middle-x mb-4"
+        >
+          <div className="text-white text-center">
+            <div className="mb-2">
+              <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+              </svg>
+            </div>
+            <small className="opacity-75">Scroll</small>
+          </div>
+        </motion.div>
+>>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
       </section>
 
       {/* Countries Section */}
@@ -331,7 +482,11 @@ const Home = () => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
+<<<<<<< HEAD
             className="mb-4 d-flex justify-content-between align-items-center flex-wrap gap-2"
+=======
+            className="mb-4 d-flex justify-content-between align-items-center flex-wrap"
+>>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
           >
             <div>
               <p className="text-muted mb-1">
@@ -347,6 +502,7 @@ const Home = () => {
                 </small>
               )}
             </div>
+<<<<<<< HEAD
 
             {/* View mode toggle */}
             <div className="btn-group btn-group-sm" role="group" aria-label="Mode d'affichage">
@@ -370,10 +526,16 @@ const Home = () => {
           </motion.div>
 
           {/* Countries */}
+=======
+          </motion.div>
+
+          {/* Countries Grid */}
+>>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
           {paginatedData.length > 0 ? (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
+<<<<<<< HEAD
               className={
                 viewMode === 'list'
                   ? 'cc-list-container'
@@ -398,6 +560,15 @@ const Home = () => {
                     index={index}
                     currentPage={currentPage}
                     viewMode={viewMode}
+=======
+              className="row g-4"
+            >
+              {paginatedData.map((country, index) => (
+                <div key={country.cca3} className="col-sm-6 col-md-4 col-lg-3">
+                  <CountryCard
+                    country={country}
+                    index={index}
+>>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
                   />
                 </div>
               ))}

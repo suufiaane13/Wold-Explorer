@@ -12,11 +12,16 @@
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
+<<<<<<< HEAD
   padding-top: 76px;
   padding-bottom: 64px;
 }
 @media (max-width: 767.98px) {
   body { padding-bottom: 90px; }
+=======
+  padding-top: 76px; /* Hauteur de la navbar */
+  padding-bottom: 80px; /* Espace pour le lecteur de musique */
+>>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -24,7 +29,11 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
 }
 
+<<<<<<< HEAD
 /* Dark mode */
+=======
+/* Dark mode styles */
+>>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
 [data-bs-theme="dark"] {
   --bs-body-bg: #111827;
   --bs-body-color: #f9fafb;
@@ -36,11 +45,16 @@ h1, h2, h3, h4, h5, h6 {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
 [data-bs-theme="dark"] .glass-effect {
   background: rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+<<<<<<< HEAD
 /* Animations */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }
@@ -49,15 +63,39 @@ h1, h2, h3, h4, h5, h6 {
 .animate-fade-in-up { animation: fadeInUp 0.5s ease-out; }
 
 /* Country card */
+=======
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+/* Country card hover effects */
+>>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
 .country-card {
   transition: all 0.3s ease;
   border: none;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
 .country-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
+<<<<<<< HEAD
 
 /* ========== COUNTRY CARD — Fav button (clair/sombre) ========== */
 
@@ -627,3 +665,5 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 767.98px) {
   .mp-mob-row2 .mp-time { font-size: 11px; min-width: 32px; }
 }
+=======
+>>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6

@@ -23,9 +23,18 @@ const WorldClock = ({ country, showDate = false, size = 'sm', className = '' }) 
   useEffect(() => {
     const updateTime = () => {
       try {
+<<<<<<< HEAD
         const timeInTimezone = getTimeInTimezone(timezone);
         setCurrentTime(timeInTimezone);
       } catch (error) {
+=======
+        console.log(`🕐 WorldClock - Country: ${country?.name?.common}, Timezone: ${timezone}`);
+        const timeInTimezone = getTimeInTimezone(timezone);
+        console.log(`🕐 Time result:`, timeInTimezone.toLocaleTimeString());
+        setCurrentTime(timeInTimezone);
+      } catch (error) {
+        console.warn('Erreur lors de la mise à jour de l\'heure:', error);
+>>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
         setCurrentTime(new Date());
       }
     };

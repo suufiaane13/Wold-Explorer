@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { useState, useMemo, useEffect } from 'react';
+=======
+import { useState, useMemo } from 'react';
+>>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
 
 /**
  * Hook personnalisé pour gérer la pagination
@@ -10,6 +14,7 @@ export const usePagination = (data, initialItemsPerPage = 12) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(initialItemsPerPage);
 
+<<<<<<< HEAD
   const totalPages = useMemo(() => {
     return Math.max(1, Math.ceil(data.length / itemsPerPage));
   }, [data.length, itemsPerPage]);
@@ -21,12 +26,23 @@ export const usePagination = (data, initialItemsPerPage = 12) => {
     }
   }, [currentPage, totalPages]);
 
+=======
+  // Calculer les données paginées
+>>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
   const paginatedData = useMemo(() => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     return data.slice(startIndex, endIndex);
   }, [data, currentPage, itemsPerPage]);
 
+<<<<<<< HEAD
+=======
+  // Calculer le nombre total de pages
+  const totalPages = useMemo(() => {
+    return Math.ceil(data.length / itemsPerPage);
+  }, [data.length, itemsPerPage]);
+
+>>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
   // Fonction pour changer de page
   const goToPage = (page) => {
     if (page >= 1 && page <= totalPages) {
@@ -53,6 +69,10 @@ export const usePagination = (data, initialItemsPerPage = 12) => {
     totalItems: data.length,
     goToPage,
     changeItemsPerPage,
+<<<<<<< HEAD
     resetPagination: () => setCurrentPage(1)
+=======
+    resetPagination
+>>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
   };
 };

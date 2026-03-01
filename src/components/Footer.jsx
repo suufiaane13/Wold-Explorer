@@ -72,6 +72,10 @@ const Footer = () => {
                     <div className="d-flex flex-wrap gap-2 mb-3">
                       <span className="badge bg-primary">React 19.1.1</span>
                       <span className="badge bg-secondary">Bootstrap 5</span>
+<<<<<<< HEAD
+=======
+                      <span className="badge bg-success">Windsurf AI</span>
+>>>>>>> 3217b597875b4ee41101a1a30bcfa023d58528c6
                     </div>
                   </motion.div>
                 </motion.div>
